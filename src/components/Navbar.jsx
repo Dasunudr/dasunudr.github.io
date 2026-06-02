@@ -23,21 +23,20 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-      scrolled 
-        ? 'bg-cyber-darker/80 backdrop-blur-md border-b border-cyber-blue/30 py-3 shadow-lg shadow-cyber-blue/5' 
-        : 'bg-transparent py-5'
-    }`}>
+    <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolled
+      ? 'bg-cyber-darker/80 backdrop-blur-md border-b border-cyber-blue/30 py-3 shadow-lg shadow-cyber-blue/5'
+      : 'bg-transparent py-5'
+      }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-12">
-          
+
           {/* Logo */}
           <div className="flex items-center space-x-2 group">
             <div className="p-2 rounded bg-cyber-dark border border-cyber-blue/40 group-hover:border-cyber-blue group-hover:shadow-neon-blue transition-all duration-300">
               <Terminal className="w-5 h-5 text-cyber-blue animate-pulse" />
             </div>
             <a href="#home" className="font-mono text-xl font-bold tracking-wider text-white hover:text-cyber-blue transition-colors">
-              DASUN<span className="text-cyber-blue font-light">.SEC</span>
+              Dasun udara <span className="text-cyber-blue font-light">#</span>
             </a>
           </div>
 
@@ -74,9 +73,8 @@ export default function Navbar() {
       </div>
 
       {/* Mobile Menu */}
-      <div className={`md:hidden transition-all duration-300 ease-in-out ${
-        isOpen ? 'max-h-screen opacity-100 border-b border-cyber-blue/30' : 'max-h-0 opacity-0 pointer-events-none'
-      } overflow-hidden bg-cyber-darker/95 backdrop-blur-lg`}>
+      <div className={`md:hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-screen opacity-100 border-b border-cyber-blue/30' : 'max-h-0 opacity-0 pointer-events-none'
+        } overflow-hidden bg-cyber-darker/95 backdrop-blur-lg`}>
         <div className="px-2 pt-2 pb-4 space-y-1 sm:px-3">
           {navItems.map((item) => (
             <a

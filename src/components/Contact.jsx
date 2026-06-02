@@ -33,13 +33,41 @@ export default function Contact() {
     await addLog(">> VERIFYING SSL CERTIFICATE AND IP HONEYPOTS...", 400);
     await addLog(">> PUSHING ENCRYPTED PAYLOAD TO TELEMETRY PIPELINE...", 600);
     
-    setStatus('success');
-    await addLog(">> TRANSMISSION COMPLETE. SUCCESS CODE 200 // OK", 300);
-    setFormData({ name: '', email: '', message: '' });
+    try {
+      const response = await fetch("https://formsubmit.co/ajax/dasun23udara@gmail.com", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          _subject: `New Portfolio Message from ${formData.name}`
+        })
+      });
+      const data = await response.json();
+      if (response.ok && data.success !== false && data.success !== "false") {
+        setStatus('success');
+        await addLog(">> TRANSMISSION COMPLETE. SUCCESS CODE 200 // OK", 300);
+        setFormData({ name: '', email: '', message: '' });
+      } else {
+        throw new Error(data.message || "HTTP failure");
+      }
+    } catch (err) {
+      setStatus('error');
+      await addLog(">> !! TRANSMISSION ERROR: UPLINK FAILED", 400);
+      await addLog(`>> ERROR DETAIL: ${err.message || "SECURE PORT TIMEOUT"}`, 400);
+    }
   };
 
   return (
     <section id="contact" className="py-24 relative overflow-hidden bg-cyber-darker dot-bg">
+      {/* Ambient Glow Blobs */}
+      <div className="glow-blob blob-purple top-1/4 left-1/4 -translate-x-1/2"></div>
+      <div className="glow-blob blob-cyan bottom-1/4 right-0 translate-x-1/2"></div>
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Heading */}
@@ -221,7 +249,7 @@ export default function Contact() {
                       {logs.map((log, index) => (
                         <p 
                           key={index} 
-                          className={log.includes("COMPLETE") ? "text-cyber-green" : log.includes("PGP") ? "text-cyan-400" : "text-gray-300"}
+                          className={log.includes("COMPLETE") ? "text-cyber-green" : log.includes("ERROR") || log.includes("FAILED") ? "text-cyber-red" : log.includes("PGP") ? "text-cyan-400" : "text-gray-300"}
                         >
                           {log}
                         </p>
@@ -233,13 +261,28 @@ export default function Contact() {
                     <div className="mt-6 pt-4 border-t border-cyber-blue/15 flex items-center justify-between">
                       <div className="flex items-center space-x-2 text-cyber-green text-xs font-bold">
                         <CheckCircle2 className="w-4.5 h-4.5" />
-                        <span>PAYLOAD DEIVERED SECURELY</span>
+                        <span>PAYLOAD DELIVERED SECURELY</span>
                       </div>
                       <button
                         onClick={() => setStatus('idle')}
                         className="px-3 py-1.5 rounded border border-cyber-blue text-cyber-blue hover:bg-cyber-blue/10 transition-colors text-[10px]"
                       >
                         NEW_TRANSMISSION
+                      </button>
+                    </div>
+                  )}
+
+                  {status === 'error' && (
+                    <div className="mt-6 pt-4 border-t border-cyber-blue/15 flex items-center justify-between">
+                      <div className="flex items-center space-x-2 text-cyber-red text-xs font-bold">
+                        <ShieldAlert className="w-4.5 h-4.5" />
+                        <span>TRANSMISSION FAILED</span>
+                      </div>
+                      <button
+                        onClick={() => setStatus('idle')}
+                        className="px-3 py-1.5 rounded border border-cyber-red text-cyber-red hover:bg-cyber-red/10 transition-colors text-[10px]"
+                      >
+                        RETRY_TRANSMISSION
                       </button>
                     </div>
                   )}

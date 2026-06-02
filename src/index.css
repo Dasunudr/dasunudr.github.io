@@ -41,12 +41,12 @@ body {
   overflow-x: hidden;
 }
 
-/* Cyber Matrix/Grid Background */
+/* Cyber Matrix/Grid Background - Modern subtle style */
 .cyber-grid {
-  background-size: 50px 50px;
+  background-size: 60px 60px;
   background-image: 
-    linear-gradient(to right, rgba(0, 240, 255, 0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(0, 240, 255, 0.04) 1px, transparent 1px);
+    linear-gradient(to right, rgba(0, 240, 255, 0.015) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 240, 255, 0.015) 1px, transparent 1px);
   position: relative;
 }
 
@@ -57,7 +57,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle at 50% 50%, transparent 20%, rgba(2, 6, 23, 0.9) 80%);
+  background: radial-gradient(circle at 50% 50%, transparent 10%, rgba(2, 6, 23, 0.95) 90%);
   pointer-events: none;
 }
 
@@ -79,6 +79,26 @@ body {
   0% { top: 0%; }
   50% { top: 100%; }
   100% { top: 0%; }
+}
+
+@keyframes laser-sweep {
+  0% { top: -2%; opacity: 0; }
+  5% { opacity: 1; }
+  95% { opacity: 1; }
+  100% { top: 102%; opacity: 0; }
+}
+
+@keyframes clip-reveal {
+  0% { clip-path: inset(0 0 100% 0); }
+  100% { clip-path: inset(0 0 0% 0); }
+}
+
+.laser-sweep {
+  animation: laser-sweep 2s ease-in-out forwards;
+}
+
+.ascii-reveal {
+  animation: clip-reveal 2s ease-in-out forwards;
 }
 
 /* Custom Neon Glow Utilities */
@@ -116,12 +136,12 @@ body {
 
 /* Cyber Terminal/Code Card Styling */
 .cyber-card {
-  background: rgba(3, 7, 18, 0.85);
-  border: 1px solid rgba(0, 240, 255, 0.15);
-  border-radius: 8px;
+  background: rgba(3, 7, 18, 0.55);
+  border: 1px solid rgba(0, 240, 255, 0.12);
+  border-radius: 12px;
   position: relative;
   overflow: hidden;
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(20px);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -202,8 +222,30 @@ body {
   100% { clip: rect(115px, 9999px, 130px, 0); }
 }
 
-/* Micro dots background */
+/* Micro dots background - Modern low-contrast style */
 .dot-bg {
-  background-image: radial-gradient(rgba(0, 240, 255, 0.15) 1px, transparent 1px);
-  background-size: 20px 20px;
+  background-image: radial-gradient(rgba(0, 240, 255, 0.02) 1px, transparent 1px);
+  background-size: 24px 24px;
+  position: relative;
+}
+
+/* Ambient Glow Blobs */
+.glow-blob {
+  position: absolute;
+  width: 450px;
+  height: 450px;
+  border-radius: 50%;
+  filter: blur(120px);
+  pointer-events: none;
+  opacity: 0.07; /* Subtle ambient lighting */
+  z-index: 0;
+}
+.blob-cyan {
+  background: radial-gradient(circle, rgba(0, 240, 255, 1) 0%, rgba(0, 240, 255, 0) 70%);
+}
+.blob-purple {
+  background: radial-gradient(circle, rgba(168, 85, 247, 1) 0%, rgba(168, 85, 247, 0) 70%);
+}
+.blob-green {
+  background: radial-gradient(circle, rgba(57, 255, 20, 1) 0%, rgba(57, 255, 20, 0) 70%);
 }

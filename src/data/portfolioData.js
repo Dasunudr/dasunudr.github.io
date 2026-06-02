@@ -4,7 +4,7 @@ export const portfolioData = {
     username: "dasunudr",
     title: "Cybersecurity Analyst & Penetration Tester",
     shortBio: "B.Sc. Cybersecurity Student | Specializing in Network Security, Threat Analysis, and Pentesting. Building secure scripts and hunting threats in local and cloud environments.",
-    email: "dasun.udara.sec@gmail.com", // Mock contact email
+    email: "dasun23udara@gmail.com",
     github: "https://github.com/dasunudr",
     linkedin: "https://linkedin.com/in/dasunudr", // Mock profile
     twitter: "https://twitter.com/dasunudr", // Mock profile

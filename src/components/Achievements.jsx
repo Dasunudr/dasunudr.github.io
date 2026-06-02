@@ -7,6 +7,10 @@ export default function Achievements() {
 
   return (
     <section id="credentials" className="py-24 relative overflow-hidden bg-cyber-darker dot-bg">
+      {/* Ambient Glow Blobs */}
+      <div className="glow-blob blob-cyan -top-24 right-1/4"></div>
+      <div className="glow-blob blob-purple -bottom-24 left-1/4"></div>
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Heading */}

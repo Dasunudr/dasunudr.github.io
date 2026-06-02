@@ -7,6 +7,10 @@ export default function Projects({ onSelectProject }) {
 
   return (
     <section id="projects" className="py-24 relative overflow-hidden bg-cyber-darker dot-bg">
+      {/* Ambient Glow Blobs */}
+      <div className="glow-blob blob-cyan top-1/2 left-0 -translate-y-1/2 -translate-x-1/2"></div>
+      <div className="glow-blob blob-green bottom-0 right-1/4"></div>
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Heading */}

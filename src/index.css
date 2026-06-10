@@ -249,3 +249,50 @@ body {
 .blob-green {
   background: radial-gradient(circle, rgba(57, 255, 20, 1) 0%, rgba(57, 255, 20, 0) 70%);
 }
+
+/* Cyber 3D Background Overlay & Vignette */
+.bg-radial-vignette {
+  background: radial-gradient(circle, rgba(2, 6, 23, 0.2) 0%, rgba(2, 6, 23, 0.94) 85%);
+  pointer-events: none;
+}
+
+/* Premium Hover Card Scaling & Glow Effects */
+.grid > div[class*="group"],
+#credentials .grid > div,
+#projects .grid > div,
+#timeline .space-y-10 > div > div:nth-child(2),
+.cyber-card {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.grid > div[class*="group"]:hover,
+#credentials .grid > div:hover,
+#projects .grid > div:hover,
+#timeline .space-y-10 > div:hover > div:nth-child(2),
+.cyber-card:hover {
+  transform: translateY(-5px) scale(1.02) !important;
+  box-shadow: 0 15px 35px -10px rgba(0, 240, 255, 0.25), 
+              0 0 15px rgba(0, 240, 255, 0.1),
+              inset 0 0 10px rgba(0, 240, 255, 0.1) !important;
+  border-color: rgba(0, 240, 255, 0.5) !important;
+}
+
+/* Pre-animation state class for GSAP ScrollTrigger to prevent layout shifting */
+.gsap-reveal {
+  opacity: 0;
+  transform: translateY(35px);
+}
+
+/* Force sections and main wrappers to be transparent to reveal fixed 3D background */
+section, 
+main,
+#home,
+#credentials,
+#timeline,
+#projects,
+#skills,
+#contact {
+  background-color: transparent !important;
+}
+
+
